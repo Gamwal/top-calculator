@@ -1,0 +1,62 @@
+body {
+  display: flex;
+  justify-content: center;
+}
+
+#frame {
+  display: flex;
+  flex-direction: column;
+  margin-top: 100px;
+  width: 350px;
+  height: 600px;
+  background-color: rgb(230, 224, 218);
+  border-radius: 43px;
+  gap: 8px;
+  padding: 10px;
+  align-items: stretch;
+}
+
+button {
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
+  font-size: larger;
+  font-weight: bold;
+  color: rgb(255, 255, 255);
+  background-color: rgb(68, 68, 68);
+  border: none;
+}
+
+#keypad {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  flex-direction: column;
+  gap: 20px;
+  border: 2px solid rgb(20, 14, 14);
+  border-radius: 35px;
+  padding: 10px;
+  flex-grow: 1;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+#display {
+  height: 200px;
+  flex-grow: 1;
+  border: 2px solid rgb(20, 14, 14);
+  border-radius: 35px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  display: flex;
+  justify-content: end;
+  align-items: flex-end;
+  padding: 20px;
+  font-size: 40px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
