@@ -116,7 +116,7 @@ operatorButtonsList.map((button) => {
 
 const equalsButton = document.getElementById('equals');
 equalsButton.addEventListener('click', () => {
-  if (operatorHolder === '=') {
+  if (operatorHolder === '=' || operandTwoHolder.length === 0) {
     displayResult();
   } else {
   const result = operate(operandOneHolder.join(''), operandTwoHolder.join(''), operatorHolder);
@@ -170,5 +170,32 @@ instantOperatorsList.map((button) => {
     }
   });
 });
+
+
+const decimalButton = document.getElementById('decimal');
+
+decimalButton.addEventListener('click', () => {
+  if (operatorHolder.length === 0 && !operandOneHolder.includes('.')){
+    if (operandOneHolder.length === 0) {
+      operandOneHolder.push(...['0']);
+      displayResult();
+      operandOneHolder.push(...['.']);
+      displayResult();
+    } else {
+      operandOneHolder.push(...['.']);
+      displayResult();
+    }
+  } else if (operatorHolder.length !== 0 && !operandTwoHolder.includes('.')) {
+    if (operandTwoHolder.length === 0) {
+      operandTwoHolder.push(...['0']);
+      displayResult();
+      operandTwoHolder.push(...['.']);
+      displayResult();
+    } else {
+      operandTwoHolder.push(...['.']);
+      displayResult(operandTwoHolder);
+    }
+  }
+})
 
 // create instant operators that act imediately on whatever is on display and return the value
