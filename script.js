@@ -46,18 +46,16 @@ function clearHolders() {
 
 function displayResult(arr) {
   if (Array.isArray(arr)) {
-    display.textContent = arr.join('');
+    display.textContent = Number(arr.join('')).toPrecision(10);
   } else {
-    display.textContent = operandOneHolder.join('');
+    display.textContent = Number(operandOneHolder.join('')).toPrecision(10);
   }
 }
 
 function saveResult(number, arr='arr1') {
   if (arr === 'arr1'){
-    // console.log(number)
     operandOneHolder.push(...String(number).split(''));
   } else if (arr === 'arr2'){
-    // console.log(number)
     operandTwoHolder.push(...String(number).split(''));
   }
 }
@@ -71,7 +69,6 @@ const clearButton = document.getElementById('clear');
 clearButton.addEventListener('click', () => {
   clearHolders()
   display.textContent = '0';
-  // display.textContent = operandOneHolder.join('');
 })
 
 
@@ -81,9 +78,7 @@ const numberButtonsList = [...numberButtons];
 numberButtonsList.map((button) => {
   button.addEventListener('click', (event) => {
     const keyPressed = event.target;
-    // console.log(operatorHolder);
     if (operatorHolder === '=') {
-      // console.log('I was Triggered');
       clearHolders();
     }
     if (operandOneHolder.length <= 10 && operatorHolder.length === 0) {
@@ -102,7 +97,6 @@ const operatorButtonsList = [...operatorButtons];
 
 operatorButtonsList.map((button) => {
   button.addEventListener('click', (event) => {
-    // console.log(operatorHolder);
     const keyPressed = event.target;
     if (operandOneHolder.length !== 0 && operatorHolder.length === 0) {
       operatorHolder = keyPressed.textContent;
@@ -127,6 +121,7 @@ equalsButton.addEventListener('click', () => {
   }
 });
 
+
 const deleteButton = document.getElementById('delete');
 deleteButton.addEventListener('click', () => {
   if (operandOneHolder.length !== 0 && operatorHolder.length === 0) {
@@ -149,19 +144,16 @@ instantOperatorsList.map((button) => {
       clearHolders()
       saveResult(result);
       displayResult();
-      // console.log('percent clicked for operand 1');
     } else if (event.target.textContent === '%' && operatorHolder.length !== 0 && operandTwoHolder.length !== 0) {
       const result = percent(operandTwoHolder.join(''));
       operandTwoHolder = [];
       saveResult(result, 'arr2');
       displayResult(operandTwoHolder);
-      // console.log('percent clicked for operand 2');
     } else if (event.target.textContent === '+ / -' && operatorHolder.length === 0) {
       const result = changeSign(operandOneHolder.join(''));
       clearHolders()
       saveResult(result);
       displayResult();
-      // console.log("You're on fire");
     } else if (event.target.textContent === '+ / -' && operatorHolder.length !== 0 && operandTwoHolder.length !== 0) {
       const result = changeSign(operandTwoHolder.join(''));
       operandTwoHolder = [];
@@ -197,5 +189,3 @@ decimalButton.addEventListener('click', () => {
     }
   }
 })
-
-// create instant operators that act imediately on whatever is on display and return the value
