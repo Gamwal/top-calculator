@@ -44,12 +44,11 @@ function clearHolders() {
   operandTwoHolder = [];
 }
 
-function displayResult(arr) {
-  if (Array.isArray(arr)) {
-    display.textContent = Number(arr.join('')).toPrecision(10);
-  } else {
-    display.textContent = Number(operandOneHolder.join('')).toPrecision(10);
-  }
+
+function displayResult(arr = operandOneHolder) {
+  const result = Number(arr.join(''));
+  const formattedResult = result % 1 === 0 ? result.toString() : result.toFixed(10).replace(/\.?0+$/, '');
+  display.textContent = formattedResult;
 }
 
 function saveResult(number, arr='arr1') {
